@@ -10,7 +10,7 @@ export default function AppBar() {
           <Image width={114} height={45} src="/assets/logo.svg" alt="site logo" />
         </a>
       </Link>
-      <h1>Generate GitHub repositories timeline using a uername</h1>
+      <h1>Visualize GitHub repositories through a timeline</h1>
     </header>
   )
 }
