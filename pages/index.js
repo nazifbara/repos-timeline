@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+import { AppBar } from 'components'
+
 export default function Home() {
   return (
     <div>
@@ -11,7 +13,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Repos Timeline</h1>
+        <AppBar />
       </main>
     </div>
   )
