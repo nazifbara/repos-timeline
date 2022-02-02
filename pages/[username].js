@@ -1,8 +1,45 @@
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
-export default function TimelineView() {
-  const router = useRouter()
-  const { username } = router.query
+import { AppBar } from 'components'
+import { GET_TIMELINE } from 'graphql/queries'
+import client from 'apollo-client'
 
-  return <div>{username}</div>
+export default function TimelineView({ user, repositories }) {
+  return (
+    <div>
+      <Head>
+        <title>{user.name} repositories</title>
+        <meta name="description" content={`${user.name} repositories`} />
+      </Head>
+
+      <main>
+        <AppBar />
+        <div className="content-box">
+          user: {user.name}
+          <ul>
+            {repositories.map((r) => (
+              <li key={r.id}>{r.name}</li>
+            ))}
+          </ul>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export async function getServerSideProps({ params: { username } }) {
+  const { data, error, errors } = await client.query({
+    query: GET_TIMELINE,
+    variables: { username },
+  })
+
+  return {
+    props: {
+      user: data.user,
+      repositories: data.repositoryOwner.repositories.edges.map((i) => ({ ...i.node })),
+      errors: errors ?? null,
+      error: error ?? null,
+    },
+  }
 }

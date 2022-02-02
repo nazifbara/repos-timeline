@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.8",
+    "graphql": "^16.3.0",
     "next": "12.0.10",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
