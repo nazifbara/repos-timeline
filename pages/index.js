@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { AppBar } from 'components'
+import { AppBar, InputField } from 'components'
 
 export default function Home() {
   return (
@@ -14,6 +14,9 @@ export default function Home() {
 
       <main>
         <AppBar />
+        <div className="content-box">
+          <InputField />
+        </div>
       </main>
     </div>
   )
