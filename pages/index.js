@@ -1,3 +1,4 @@
+import styles from 'styles/Home.module.scss'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -12,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.home}>
         <AppBar />
         <div className="content-box">
           <InputField />

@@ -1,0 +1,13 @@
+@import 'mixins';
+
+.home {
+  height: 100vh;
+  background-image: url('/assets/github-octocat.svg');
+  background-size: 25rem;
+  background-repeat: no-repeat;
+  background-position: bottom -7.5rem right 50%;
+
+  @include medium-breakpoint {
+    background-size: 28.125rem;
+  }
+}
