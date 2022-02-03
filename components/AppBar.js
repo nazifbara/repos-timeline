@@ -2,7 +2,7 @@ import styles from 'styles/AppBar.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function AppBar() {
+export default function AppBar({ children }) {
   return (
     <header className={styles.appBar}>
       <Link passHref href="/">
@@ -10,7 +10,7 @@ export default function AppBar() {
           <Image width={114} height={45} src="/assets/logo.svg" alt="site logo" />
         </a>
       </Link>
-      <h1>Visualize GitHub repositories through a timeline</h1>
+      {children}
     </header>
   )
 }

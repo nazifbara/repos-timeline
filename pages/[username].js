@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { AppBar } from 'components'
+import { AppBar, UserCard, Timeline } from 'components'
 import { GET_TIMELINE } from 'graphql/queries'
 import client from 'apollo-client'
 
@@ -14,14 +14,11 @@ export default function TimelineView({ user, repositories }) {
       </Head>
 
       <main>
-        <AppBar />
+        <AppBar>
+          <UserCard user={user} />
+        </AppBar>
         <div className="content-box">
-          user: {user.name}
-          <ul>
-            {repositories.map((r) => (
-              <li key={r.id}>{r.name}</li>
-            ))}
-          </ul>
+          <Timeline repositories={repositories} username={user.login} />
         </div>
       </main>
     </div>

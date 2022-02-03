@@ -1,0 +1,45 @@
+@import 'variables';
+
+.user-card {
+  display: flex;
+  justify-content: space-evenly;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+    transition: all, 0.3s;
+
+    &:hover {
+      color: $secondary;
+      border: 0.125rem solid $secondary;
+      border-radius: 5px;
+      padding: 0.3125rem 0.9375rem;
+    }
+  }
+
+  &__info {
+    margin-left: 0.9375rem;
+
+    h1 {
+      font-size: 20px;
+      text-align: left;
+      font-weight: 400;
+    }
+    h2 {
+      margin-top: 0.1875rem;
+      font-size: 1.125rem;
+      text-align: left;
+      font-weight: 300;
+    }
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    margin-right: 0.9375rem;
+  }
+
+  strong {
+    color: white;
+  }
+}

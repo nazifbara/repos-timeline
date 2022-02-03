@@ -1,5 +1,13 @@
+.flex {
+  display: flex;
+}
+
+.ai-c {
+  align-items: center;
+}
+
 .content-box {
   margin: 1.875rem auto 1.875rem auto;
   padding: 0 0.625rem;
-  max-width: 46.875rem;
+  max-width: 50rem;
 }

@@ -1,9 +1,10 @@
 @import 'mixins';
 
 .appBar {
-  min-height: 12.5rem;
+  min-height: 185px;
   background-image: url('/assets/wave.svg');
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   padding: 0.625rem 0.9375rem;
 
