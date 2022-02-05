@@ -4,8 +4,20 @@ import Head from 'next/head'
 import { AppBar, UserCard, Timeline } from 'components'
 import { GET_TIMELINE } from 'graphql/queries'
 import client from 'apollo-client'
+import Link from 'next/link'
 
-export default function TimelineView({ user, repositories }) {
+export default function TimelineView({ user, repositories, error }) {
+  if (error) {
+    return (
+      <main>
+        <div className="content-box">
+          <h1>User Not Found</h1>
+          <Link href="/">Return to the home page</Link>
+        </div>
+      </main>
+    )
+  }
+
   return (
     <div>
       <Head>
@@ -26,17 +38,22 @@ export default function TimelineView({ user, repositories }) {
 }
 
 export async function getServerSideProps({ params: { username } }) {
-  const { data, error, errors } = await client.query({
-    query: GET_TIMELINE,
-    variables: { username },
-  })
-
-  return {
-    props: {
-      user: data.user,
-      repositories: data.repositoryOwner.repositories.edges.map((i) => ({ ...i.node })),
-      errors: errors ?? null,
-      error: error ?? null,
-    },
+  try {
+    const { data } = await client.query({
+      query: GET_TIMELINE,
+      variables: { username },
+    })
+    return {
+      props: {
+        user: data.user,
+        repositories: data.repositoryOwner.repositories.edges.map((i) => ({ ...i.node })),
+      },
+    }
+  } catch (error) {
+    return {
+      props: {
+        error: error.graphQLErrors[0].type,
+      },
+    }
   }
 }
