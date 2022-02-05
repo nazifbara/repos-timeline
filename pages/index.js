@@ -14,7 +14,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.home}>
-        <AppBar />
+        <AppBar>
+          <h1>Visualize GitHub repositories through a timeline</h1>
+        </AppBar>
         <div className="content-box">
           <InputField />
         </div>
