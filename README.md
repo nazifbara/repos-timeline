@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ReposTimeline
 
-## Getting Started
+![screenshot](/screenshot.png)
 
-First, run the development server:
+## About
 
-```bash
-npm run dev
-# or
-yarn dev
+ReposTimeline is a NextJS app that helps visualize your repositories in a timeline you can easily share.
+
+## Installation
+
+```
+git clone https://github.com/nazifbara/repos-timeline.git
+cd repos-timeline
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Generate a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to be able to communicate the graphql API. Give it the public_repo and read:user scope. Then, create a .env.local file with the following:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+GITHUB_TOKEN=YOUR_TOKEN
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Now start the app:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm run dev
+```
 
-## Learn More
+## Hosting
 
-To learn more about Next.js, take a look at the following resources:
+This app is hosted on AWS using AWS Amplify. Refer to the [AWS Amplify docs for the instructions](https://docs.amplify.aws/cli/start/install/#option-1-watch-the-video-guide). I suggest you use the git-based hosting with Continuous Deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Once your backend is set up, head over to the build settings. Edit the amplify.yml and modify the build section:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```yml
+build:
+  commands:
+    - npm run build
+    - echo "GITHUB_TOKEN=$GITHUB_TOKEN" >> .env.local
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Finally, add the GITHUB_TOKEN env variable in the "Environment variables" section.
