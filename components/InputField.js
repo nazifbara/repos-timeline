@@ -1,13 +1,23 @@
 import styles from 'styles/InputField.module.scss'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function InputField() {
   const [username, setUsername] = useState('')
+  const router = useRouter()
 
   const handleInputChange = (e) => setUsername(e.target.value)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!username) {
+      return
+    }
+    router.push(`/${username}`)
+  }
+
   return (
-    <div className={styles['input-field']}>
+    <form onSubmit={handleSubmit} className={styles['input-field']}>
       <input
         onChange={handleInputChange}
         value={username}
@@ -15,9 +25,7 @@ export default function InputField() {
         type="text"
       />
 
-      <Link passHref href={`/${username}`}>
-        <button>Generate</button>
-      </Link>
-    </div>
+      <button>Generate</button>
+    </form>
   )
 }
