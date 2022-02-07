@@ -18,6 +18,8 @@ export default function TimelineView({ user, repositories, error }) {
     )
   }
 
+  const emptyRepos = repositories.length === 0
+
   return (
     <div>
       <Head>
@@ -30,6 +32,9 @@ export default function TimelineView({ user, repositories, error }) {
           <UserCard user={user} />
         </AppBar>
         <div className="content-box">
+          {emptyRepos && (
+            <p style={{ textAlign: 'center' }}>{user.login} has no public repositories</p>
+          )}
           <Timeline repositories={repositories} username={user.login} />
         </div>
       </main>
