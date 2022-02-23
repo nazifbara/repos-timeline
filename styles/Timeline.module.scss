@@ -54,7 +54,7 @@
     min-height: 8.75rem;
 
     @include small-breakpoint {
-      flex: 1;
+      flex-grow: 1;
     }
   }
 
