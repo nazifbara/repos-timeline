@@ -15,6 +15,7 @@ export const GET_TIMELINE = gql`
             name
             description
             isFork
+            isArchived
             stargazerCount
             createdAt
           }
