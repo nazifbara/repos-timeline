@@ -1,6 +1,6 @@
 import styles from 'styles/Timeline.module.scss'
 
-import { StarIcon } from 'components'
+import { StarIcon, ForkIcon } from 'components'
 import { formatDate } from 'utils/helpers'
 
 export default function Timeline({ repositories, username }) {
@@ -21,8 +21,8 @@ export default function Timeline({ repositories, username }) {
           >
             <time dateTime={r.createdAt}>{formatDate(r.createdAt)}</time>
             <div className={`flex ai-c ${styles.timeline__heading}`}>
+              {r.isFork && <ForkIcon />}
               <h2>{r.name}</h2>
-
               <div className="flex ai-c">
                 <StarIcon /> {r.stargazerCount}
               </div>
