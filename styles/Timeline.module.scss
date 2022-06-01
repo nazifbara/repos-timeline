@@ -26,7 +26,7 @@
           padding: 0 0.625rem 0.625rem 0;
         }
 
-        p {
+        & {
           text-align: right;
         }
 
@@ -114,10 +114,15 @@
   }
 
   &__heading {
-    margin-bottom: 0.625rem;
-
     svg {
       margin: 0 0.3125rem;
     }
+  }
+
+  &__activeTime {
+    display: block;
+    margin-bottom: 0.5rem !important;
+    font-size: 0.75rem;
+    color: #4cc38a;
   }
 }

@@ -14,6 +14,19 @@ export const GET_TIMELINE = gql`
             id
             name
             description
+            defaultBranchRef {
+              target {
+                ... on Commit {
+                  history(first: 1) {
+                    edges {
+                      node {
+                        committedDate
+                      }
+                    }
+                  }
+                }
+              }
+            }
             isFork
             isArchived
             stargazerCount

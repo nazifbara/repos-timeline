@@ -51,7 +51,10 @@ export async function getServerSideProps({ params: { username } }) {
     return {
       props: {
         user: data.user,
-        repositories: data.repositoryOwner.repositories.edges.map((i) => ({ ...i.node })),
+        repositories: data.repositoryOwner.repositories.edges.map((i) => ({
+          ...i.node,
+          lastCommitDate: i.node.defaultBranchRef.target.history.edges[0].node.committedDate,
+        })),
       },
     }
   } catch (error) {
