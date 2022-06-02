@@ -53,7 +53,9 @@ export async function getServerSideProps({ params: { username } }) {
         user: data.user,
         repositories: data.repositoryOwner.repositories.edges.map((i) => ({
           ...i.node,
-          lastCommitDate: i.node.defaultBranchRef.target.history.edges[0].node.committedDate,
+          lastCommitDate: i.node.defaultBranchRef
+            ? i.node.defaultBranchRef.target.history.edges[0].node.committedDate
+            : null,
         })),
       },
     }

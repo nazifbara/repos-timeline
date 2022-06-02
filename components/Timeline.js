@@ -27,10 +27,12 @@ export default function Timeline({ repositories, username }) {
                 <StarIcon /> {r.stargazerCount}
               </div>
             </div>
-            <span className={styles.timeline__activeTime}>
-              active time: {moment(r.createdAt).from(r.lastCommitDate, true)} - last commit:{' '}
-              {moment(r.lastCommitDate).fromNow()}
-            </span>
+            {r.lastCommitDate && (
+              <span className={styles.timeline__activeTime}>
+                active time: {moment(r.createdAt).from(r.lastCommitDate, true)} - last commit:{' '}
+                {moment(r.lastCommitDate).fromNow()}
+              </span>
+            )}
             <p>{r.description}</p>
           </a>
         </article>
