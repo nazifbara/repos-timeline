@@ -10,7 +10,15 @@
 </script>
 
 <svelte:head>
-	<title>{user.name} repositories</title>
+	{#if user.name}
+		<title>
+			{user.name} repositories
+		</title>
+	{:else}
+		<title>
+			{user.login} repositories
+		</title>
+	{/if}
 	<meta name="description" content={`${user.name} repositories`} />
 </svelte:head>
 
