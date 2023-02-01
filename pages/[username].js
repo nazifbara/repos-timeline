@@ -60,9 +60,11 @@ export async function getServerSideProps({ params: { username } }) {
       },
     }
   } catch (error) {
+    console.error(error)
+
     return {
       props: {
-        error: error.graphQLErrors[0].type,
+        error: 'Something went wrong',
       },
     }
   }
