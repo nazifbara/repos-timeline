@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
 import { env } from '$env/dynamic/public';
-import { ApolloClient } from '@apollo/client/core';
-import { HttpLink } from '@apollo/client/link/http';
-import { InMemoryCache } from '@apollo/client/cache';
-import { setContext } from '@apollo/client/link/context';
+import { ApolloClient } from '@apollo/client/core/core.cjs';
+import { HttpLink } from '@apollo/client/link/http/http.cjs';
+import { InMemoryCache } from '@apollo/client/cache/cache.cjs';
+import { setContext } from '@apollo/client/link/context/context.cjs';
 
 class Client {
 	static _instance;
