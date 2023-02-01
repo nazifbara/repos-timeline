@@ -43,6 +43,8 @@ export default function TimelineView({ user, repositories, error }) {
 }
 
 export async function getServerSideProps({ params: { username } }) {
+  console.log('credential', process.env.GITHUB_TOKEN)
+
   try {
     const { data } = await client.query({
       query: GET_TIMELINE,
