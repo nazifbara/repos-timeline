@@ -1,6 +1,0 @@
-export { default as ForkIcon } from './ForkIcon'
-export { default as AppBar } from 'components/AppBar'
-export { default as InputField } from 'components/InputField'
-export { default as UserCard } from 'components/UserCard'
-export { default as Timeline } from 'components/Timeline'
-export { default as StarIcon } from 'components/StarIcon'
